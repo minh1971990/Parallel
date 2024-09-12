@@ -31,7 +31,7 @@ const Hero = () => {
         <div className="not-prose mt-6 flex gap-2 md:mt-12">
           <Button asChild>
             <Link href="/">
-              About Us
+              Download
             </Link>
           </Button>
           <Button variant={"ghost"} asChild>
