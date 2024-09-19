@@ -22,33 +22,33 @@ const featureText: FeatureText[] = [
   {
     image: "/path/to/https://th.bing.com/th/id/OIP.kk1idYXmRvEULaD_cBA3UAHaIG?rs=1&pid=ImgDetMain", 
     title: "Minh Nguyen",
-    href: "/",
+    href: "https://www.linkedin.com/in/minhnguyen25",
     description:
       "Web Developer",
-    cta: "Learn More",
+    cta: "Connect",
   },
   {
     title: "Julius Hearns",
-    href: "/",
+    href: "https://www.linkedin.com/in/julius-hearns/",
     description: "Game Developer",
 
-    cta: "Learn More",
+    cta: "Connect",
   },
   {
 
     title: "Keane Albright",
-    href: "/",
+    href: "https://www.linkedin.com/in/keane-albright/",
     description:
       "Game Developer",
-    cta: "Learn More",
+    cta: "Connect",
   },
   {
 
     title: "Jackson Leeper",
-    href: "/",
+    href: "https://www.linkedin.com/in/jackson-leeper/",
     description:
       "Game Developer",
-    cta: "Learn More",
+    cta: "Connect",
   },
 ];
 
