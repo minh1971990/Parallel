@@ -24,8 +24,8 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
-  details: z.string().email({
-    message: "Please enter a valid email address.",
+  details: z.string().min(1,{
+    message: "Please enter some details.",
   }),
 });
 
@@ -41,9 +41,22 @@ export default function Footer() {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    fetch('/api/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      // Optionally reset form or notify user of success
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      // Optionally notify user of failure
+    });
   }
   return (
     <footer>

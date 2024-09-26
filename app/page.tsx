@@ -1,10 +1,9 @@
 import { Container, Main, Section } from "@/components/craft";
 import CTA from "@/components/home-page/cta";
-import FeatureLeft from "@/components/home-page/feature-left";
-import FeatureRight from "@/components/home-page/feature-right";
 import Footer from "@/components/home-page/footer-one";
-import Hero from "@/components/home-page/hero-two";
-import Feature from "@/components/home-page/feature-two";
+import Hero from "@/components/home-page/home";
+import Feature from "@/components/home-page/aboutus";
+import {About}  from "@/components/home-page/members";
 
 export default function Home() {
   return (

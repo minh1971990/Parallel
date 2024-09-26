@@ -1,5 +1,6 @@
 // React and Next.js imports
 import Link from "next/link";
+import Image from "next/image";
 
 // Third-party library imports
 import Balancer from "react-wrap-balancer";
@@ -9,6 +10,7 @@ import { Section, Container } from "@/components/craft";
 
 // Icon imports
 import { Coins, ArrowRight } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa";
 
 type FeatureText = {
   title: string;
@@ -20,7 +22,7 @@ type FeatureText = {
 
 const featureText: FeatureText[] = [
   {
-    image: "/path/to/https://th.bing.com/th/id/OIP.kk1idYXmRvEULaD_cBA3UAHaIG?rs=1&pid=ImgDetMain", 
+    image: "/image.jpg", 
     title: "Minh Nguyen",
     href: "https://www.linkedin.com/in/minhnguyen25",
     description:
@@ -28,6 +30,7 @@ const featureText: FeatureText[] = [
     cta: "Connect",
   },
   {
+    image: "/image.jpg",
     title: "Julius Hearns",
     href: "https://www.linkedin.com/in/julius-hearns/",
     description: "Game Developer",
@@ -35,7 +38,7 @@ const featureText: FeatureText[] = [
     cta: "Connect",
   },
   {
-
+    image: "/image.jpg",
     title: "Keane Albright",
     href: "https://www.linkedin.com/in/keane-albright/",
     description:
@@ -43,7 +46,7 @@ const featureText: FeatureText[] = [
     cta: "Connect",
   },
   {
-
+    image: "/image.jpg",
     title: "Jackson Leeper",
     href: "https://www.linkedin.com/in/jackson-leeper/",
     description:
@@ -72,10 +75,22 @@ const Feature = () => {
                 >
                   <div className="grid gap-4">
                     <h4 className="text-xl text-primary">{title}</h4>
+                    {image && (
+                    <div className="relative w-full h-40"> {/* Adjust height as needed */}
+                      <Image
+                        src={image}
+                        alt={title}
+                        layout="fill" // Ensures the image fills the container
+                        objectFit="cover" // Makes sure the image scales properly
+                        className="rounded-md" // Optional: adds rounded corners
+                      />
+                    </div>
+                  )}
                     <p className="text-base opacity-75">{description}</p>
                   </div>
                   {cta && (
                     <div className="flex h-fit items-center text-sm font-semibold">
+                      <FaLinkedin className="mr-2 h-4 w-4" />
                       <p>{cta}</p> <ArrowRight className="ml-2 h-4 w-4" />
                     </div>
                   )}
