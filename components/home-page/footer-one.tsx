@@ -69,11 +69,11 @@ export default function Footer() {
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
+                <FormItem className="flex flex-col items-left">
+                  <FormLabel className="mb-2 text-lg">Email</FormLabel>
                   <FormControl>
-                    <Input
-                      className="md:w-96"
+                    <textarea
+                      className="md:w-96 h-16 p-2 rounded-md border border-gray-300 text-sm"
                       placeholder="example@parallel.com"
                       {...field}
                     />
@@ -87,11 +87,11 @@ export default function Footer() {
               control={form.control}
               name="details"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Details</FormLabel>
+                <FormItem className="flex flex-col items-left">
+                  <FormLabel className="mb-2 text-lg">Details</FormLabel>
                   <FormControl>
-                    <Input
-                      className="md:w-170 md:h-200"
+                    <textarea
+                      className="md:w-96 h-32 p-2 rounded-md border border-gray-300 text-sm"
                       placeholder="What issues are you having?"
                       {...field}
                     />
@@ -102,7 +102,7 @@ export default function Footer() {
             />
 
             <button type="submit" className="hover-button">
-              <IoMdSend/>
+              <IoMdSend />
               Submit
             </button>
           </form>
