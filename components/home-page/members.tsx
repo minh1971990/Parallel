@@ -61,7 +61,7 @@ export const About = ({ learnMoreRef }: { learnMoreRef: React.RefObject<HTMLDivE
 
   return (
     <section
-      id="about"
+      id="about-us"
       className="about flex flex-col justify-center items-center w-full h-auto mt-16 lg:h-auto lg:flex lg:flex-col lg:items-center lg:justify-evenly"
     >
         {teamMembers.map((member, index) => (
@@ -72,7 +72,7 @@ export const About = ({ learnMoreRef }: { learnMoreRef: React.RefObject<HTMLDivE
             }`}
           >
             {/* Card on the left or right */}
-            <div className="card-container w-full h-auto flex justify-center items-center lg:w-1/2 lg:h-full">
+            <div className="card-container w-full h-auto flex justify-center items-center lg:w-1/3 lg:h-full">
               <div className="card rounded-md w-full h-full flex flex-col justify-center items-center lg:p-7 border-solid border-2 border-slate-500 lg:w-4/5 lg:h-full relative overflow-hidden">
                 <div className="image flex flex-col justify-center items-center relative lg:flex lg:flex-col lg:justify-evenly lg:items-center lg:h-2/5 lg:w-full">
                   <Image className="lg:w-4/5 w-60 h-60 rounded-md z-20 object-cover" src={member.imageSrc} width={230} height={300} alt="profile card img" />

@@ -58,7 +58,7 @@ export default function Footer() {
   }
 
   return (
-    <footer>
+    <footer id="contact">
       <h3 className="text-4xl not-prose flex flex-col gap-6 mt-5 mb-5 text-center">
         <Balancer>Contact</Balancer>
       </h3>
