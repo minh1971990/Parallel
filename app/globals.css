@@ -73,4 +73,11 @@
     body {
       @apply bg-background text-foreground;
     }
+  @layer base {
+      .container {
+      @apply px-6 lg:px-12;
+      }
+    }
+    
   }
+ 

@@ -15,6 +15,10 @@ const config = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        "xl": "1200px",
+        "lg": "1024px",
+        "md": "768px",
+        "sm": "640px",
       },
     },
     extend: {
@@ -67,10 +71,28 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        rainbow: {
+          '0%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        rainbow: 'rainbow 2000s linear infinite',
+      },
+      screens: {
+        "2xl": "1400px",
+        "xl": "1200px",
+        "lg": "1024px",
+        "md": "768px",
+        "sm": "640px",
+      },
+      overflow: {
+        'visible': 'visible',
+      },
+      pointerEvents: {
+        'auto': 'auto',
       },
     },
   },
