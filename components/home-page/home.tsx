@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Balancer from "react-wrap-balancer";
 import { BsDownload } from "react-icons/bs";
-import { RoboModel } from './Scene';
+import { RoboModel} from './Scene';
 import Typed from 'typed.js';
 import { useEffect, useRef } from 'react';
 import { TbNotes } from "react-icons/tb";
@@ -55,7 +55,7 @@ const Hero = ({ learnMoreRef }: { learnMoreRef: React.RefObject<HTMLDivElement> 
         <div className="flex flex-col lg:flex-row items-center justify-center mt-12 lg:mt-0 w-full lg:gap-16">
           <div className="card p-10 rounded-lg min-h-[500px] lg:min-h-[500px] min-w-[500px] lg:min-w-[800px] flex flex-col items-center justify-center lg:w-1/2">
             <h1 className="font-bold text-4xl lg:text-5xl tracking-wider mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-50 via-gray-400 to-gray-800">Parallel</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-50 via-gray-400 to-gray-800">Nicotine</span>
             </h1>
 
             {/* Typing effect */}
@@ -82,7 +82,7 @@ const Hero = ({ learnMoreRef }: { learnMoreRef: React.RefObject<HTMLDivElement> 
               <Link href="/release-notes">
                 <span className="flex items-center underline text-sm text-gray-400 cursor-pointer hover:text-gray-300 transition">
                   <TbNotes className="mr-1 text-lg" />
-                  <span>Release Notes</span>
+
                 </span>
               </Link>
             </div>
