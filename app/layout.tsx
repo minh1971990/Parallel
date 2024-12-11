@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} px-8 py-4`}> {/* Apply Roboto font and padding globally */}
+      <body className="bg-[#1F2833]">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

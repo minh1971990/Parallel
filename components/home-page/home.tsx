@@ -3,10 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import Balancer from "react-wrap-balancer";
-import { BsDownload } from "react-icons/bs";
-import { RoboModel } from './Scene';
+import { BsDownload, BsPlayCircle, BsGithub } from "react-icons/bs";
 import Typed from 'typed.js';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { TbNotes } from "react-icons/tb";
 import { Section, Container } from "@/components/craft";
 
@@ -15,32 +14,36 @@ import Logo from "@/public/logo.svg";
 import { Suspense } from "react";
 
 const Hero = ({ learnMoreRef }: { learnMoreRef: React.RefObject<HTMLDivElement> }) => {
+  const [showVideo, setShowVideo] = useState(false);
   const typedElementRef1 = useRef(null);
   const typedElementRef2 = useRef(null);
+  const [isTypedInitialized, setIsTypedInitialized] = useState(false);
 
-  // Typing effect with useEffect
   useEffect(() => {
-    const options1 = {
-      strings: ['A 2D Retro Top-Down thriller game project'],
-      typeSpeed: 20,
-      backSpeed: 40,
-      cursorChar: ' ',
-      loop: false,
-      onComplete: () => {
-        new Typed(typedElementRef2.current, {
-          strings: ['by <span class="text-red-600 font-bold">Wabash.</span> Computer Science seniors.'],
-          typeSpeed: 20,
-          backSpeed: 40,
-          loop: false,
-        });
-      },
-    };
+    if (typedElementRef1.current) {
+      const typed1 = new Typed(typedElementRef1.current, {
+        strings: ['A 2D Retro Top-Down thriller game project'],
+        typeSpeed: 20,
+        backSpeed: 40,
+        cursorChar: '',
+        loop: false,
+        onComplete: () => {
+          if (typedElementRef2.current) {
+            new Typed(typedElementRef2.current, {
+              strings: ['by <span class="text-red-600 font-bold">Wabash.</span> Computer Science seniors.'],
+              typeSpeed: 20,
+              backSpeed: 40,
+              loop: false,
+              cursorChar: '',
+            });
+          }
+        },
+      });
 
-    const typed1 = new Typed(typedElementRef1.current, options1);
-
-    return () => {
-      typed1.destroy();
-    };
+      return () => {
+        typed1.destroy();
+      };
+    }
   }, []);
 
   const scrollToLearnMore = () => {
@@ -49,63 +52,110 @@ const Hero = ({ learnMoreRef }: { learnMoreRef: React.RefObject<HTMLDivElement> 
     }
   };
 
+  const handlePlayClick = () => {
+    setShowVideo(true);
+  };
+
   return (
-    <Section className="flex flex-col items-center justify-center min-h-screen">
-      <Container className="flex flex-col items-center justify-center text-center w-full">
+    <Section className="flex flex-col items-center justify-center min-h-screen bg-[#1F2833]">
+      <Container className="flex flex-col items-center justify-center text-center w-full border-1 border-[#66FCF1]/20 p-8">
         <div className="flex flex-col lg:flex-row items-center justify-center mt-12 lg:mt-0 w-full lg:gap-16">
-          <div className="card p-10 rounded-lg min-h-[500px] lg:min-h-[500px] min-w-[500px] lg:min-w-[800px] flex flex-col items-center justify-center lg:w-1/2">
-            <h1 className="font-bold text-4xl lg:text-5xl tracking-wider mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-50 via-gray-400 to-gray-800">Parallel</span>
+          <div className="card p-10 rounded-lg min-h-[500px] lg:min-h-[500px] min-w-[800px] lg:min-w-[900px] flex flex-col items-center justify-center lg:w-1/2 bg-[#0B0C10] border-2">
+            <h1 className="parallel-text font-extrabold text-8xl lg:text-9xl tracking-wider mb-12">
+              PARALLEL
             </h1>
 
-            {/* Typing effect */}
-            <h3 className="text-muted-foreground !mt-0 text-lg lg:text-2xl">
-              <Balancer>
-                <span ref={typedElementRef1} className="text-gradient-shadow"></span>
-                <br />
-                <span ref={typedElementRef2} className="text-gradient-shadow"></span>
-              </Balancer>
-            </h3>
+            <p ref={typedElementRef1} className="description-text text-lg lg:text-xl max-w-2xl mb-8"></p>
+            <p ref={typedElementRef2} className="description-text text-lg lg:text-xl max-w-2xl mb-8"></p>
 
+            <div className="video-container mt-6 relative">
+              {!showVideo ? (
+                <div 
+                  onClick={handlePlayClick}
+                  className="cursor-pointer relative w-[560px] h-[315px] flex flex-col items-center justify-center bg-[#236360] rounded-lg"
+                >
+                  <BsPlayCircle className="w-16 h-16 text-[#66FCF1] hover:text-[#1F2833] transition-colors" />
+                  <p className="mt-4 text-[#66FCF1] text-sm">Click here to view demo</p>
+                </div>
+              ) : (
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/fFSlqyemCxw?autoplay=1"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="rounded-lg"
+                ></iframe>
+              )}
+            </div>
             <div className="not-prose mt-6 flex gap-8 md:mt-12">
-              <button onClick={scrollToLearnMore} className="hover-button">
-                <Link href="/" className="flex items-center space-x-2">
+              <button className="hover-button">
+                <Link 
+                  href="https://github.com/keen-25/Senior-Seminar-Game" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center space-x-2"
+                >
                   <BsDownload className="mr-2" />
                   <span>Download</span>
                 </Link>
               </button>
-              <button onClick={scrollToLearnMore} className="hover-button">
-                Learn More -&gt;
+              <button className="hover-button">
+                <Link 
+                  href="https://github.com/keen-25/Senior-Seminar-Game" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center"
+                >
+                  <BsGithub className="mr-2" />
+                  <span>Github</span>
+                </Link>
               </button>
             </div>
-            <div className="mt-4">
-              <Link href="/release-notes">
-                <span className="flex items-center underline text-sm text-gray-400 cursor-pointer hover:text-gray-300 transition">
-                  <TbNotes className="mr-1 text-lg" />
-                  <span>Release Notes</span>
-                </span>
-              </Link>
-            </div>
-          </div>
-
-          <div className="mt-12 lg:mt-0 lg:ml-8 lg:w-1/2 flex justify-center items-center">
-            <RoboModel />
           </div>
         </div>
 
         <style jsx>{`
+          @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+          .card {
+            background: rgba(11, 12, 16, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 5px solid rgba(102, 252, 241, 0.1);
+          }
+
+          .parallel-text {
+            font-family: 'Montserrat', sans-serif;
+            color: #66FCF1;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+          }
+
+          .description-text {
+            font-family: 'Montserrat', sans-serif;
+            color: #C5C6C7;
+            font-weight: 400;
+            line-height: 1.6;
+          }
+
           .hover-button {
+            font-family: 'Montserrat', sans-serif;
             position: relative;
             z-index: 1;
-            padding: 0.4rem 0.8rem;
+            padding: 0.6rem 1.2rem;
             font-size: 1rem;
-            letter-spacing: 0.15rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: black;
-            background-color: yellow !important;
-            border-radius: 0.5rem;
+            color: #0B0C10;
+            background-color: #66FCF1 !important;
+            border: 2px solid #66FCF1;
+            border-radius: 4px;
             overflow: hidden;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
           }
 
           .hover-button::before {
@@ -115,7 +165,7 @@ const Hero = ({ learnMoreRef }: { learnMoreRef: React.RefObject<HTMLDivElement> 
             left: 0;
             width: 0%;
             height: 100%;
-            background-color: #00bfff;
+            background: #45A29E;
             transition: width 0.3s ease;
             z-index: -1;
           }
@@ -125,25 +175,20 @@ const Hero = ({ learnMoreRef }: { learnMoreRef: React.RefObject<HTMLDivElement> 
           }
 
           .hover-button:hover {
-            color: white !important;
+            color: #C5C6C7 !important;
+            border-color: #45A29E;
           }
 
-          .text-gradient-shadow {
-            background: linear-gradient(to right, #2bc0e4, #b2e4a1, #eaecc6);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+          .video-container {
+            width: 560px;
+            height: 315px;
+            border-radius: 0.5rem;
+            overflow: hidden;
           }
 
-          .card {
-            background: rgba(255, 255, 255, 0);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            padding: 2rem;
-            margin-top: 2rem;
+          .video-container iframe {
+            width: 100%;
+            height: 100%;
           }
         `}</style>
       </Container>

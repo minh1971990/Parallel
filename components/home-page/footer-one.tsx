@@ -58,27 +58,27 @@ export default function Footer() {
   }
 
   return (
-    <footer id="contact">
-      <h3 className="text-4xl not-prose flex flex-col gap-6 mt-5 mb-5 text-center">
+    <footer id="submit-ticket" className="bg-[#1F2833]">
+      <h3 className="parallel-text text-6xl lg:text-7xl not-prose flex flex-col gap-6 mt-5 mb-5 text-center text-[#66FCF1]">
         <Balancer>Contact</Balancer>
       </h3>
-      <div className="container">
+      <div className="card container p-8">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem className="flex flex-col items-left">
-                  <FormLabel className="mb-2 text-lg">Email</FormLabel>
+                  <FormLabel className="mb-2 text-xl description-text text-[#66FCF1]">Email</FormLabel>
                   <FormControl>
                     <textarea
-                      className="md:w-96 h-16 p-2 rounded-md border border-gray-300 text-sm"
+                      className="w-full h-16 p-4 rounded-md border border-[#66FCF1]/20 bg-[#0B0C10] text-[#C5C6C7] text-lg"
                       placeholder="example@parallel.com"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-[#66FCF1]" />
                 </FormItem>
               )}
             />
@@ -88,27 +88,27 @@ export default function Footer() {
               name="details"
               render={({ field }) => (
                 <FormItem className="flex flex-col items-left">
-                  <FormLabel className="mb-2 text-lg">Details</FormLabel>
+                  <FormLabel className="mb-2 text-xl description-text text-[#66FCF1]">Details</FormLabel>
                   <FormControl>
                     <textarea
-                      className="md:w-96 h-32 p-2 rounded-md border border-gray-300 text-sm"
+                      className="w-full h-32 p-4 rounded-md border border-[#66FCF1]/20 bg-[#0B0C10] text-[#C5C6C7] text-lg"
                       placeholder="What issues are you having?"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-[#66FCF1]" />
                 </FormItem>
               )}
             />
 
-            <button type="submit" className="hover-button">
-              <IoMdSend />
+            <button type="submit" className="hover-button text-lg">
+              <IoMdSend className="mr-2 text-xl" />
               Submit
             </button>
           </form>
         </Form>
         {isSubmitted && (
-          <div className="bg-green-100 text-green-800 p-4 mt-4 rounded">
+          <div className="bg-[#45A29E]/20 text-[#66FCF1] p-4 mt-4 rounded border border-[#66FCF1]/20 text-lg">
             Your form has been successfully submitted!
           </div>
         )}
@@ -116,19 +116,22 @@ export default function Footer() {
 
       <style jsx>{`
         .hover-button {
+          font-family: 'Montserrat', sans-serif;
           position: relative;
           z-index: 1;
-          padding: 0.4rem 0.8rem;
+          padding: 0.6rem 1.2rem;
           font-size: 1rem;
-          letter-spacing: 0.15rem;
+          font-weight: 600;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: black;
-          background-color: yellow !important;
-          border-radius: 0.5rem;
+          color: #0B0C10;
+          background-color: #66FCF1 !important;
+          border: 2px solid #66FCF1;
+          border-radius: 4px;
           overflow: hidden;
-          transition: color 0.3s ease;
-          display: inline-flex; /* Ensures icon and text stay on the same line */
-          align-items: center; /* Vertically centers icon and text */
+          transition: all 0.3s ease;
+          display: inline-flex;
+          align-items: center;
           gap: 0.5rem;
         }
 

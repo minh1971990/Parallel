@@ -4,8 +4,8 @@
 
   @layer base {
     :root {
-      --background: 0 0% 100%;
-      --foreground: 240 10% 3.9%;
+      --background: 240 25% 5%;  /* #0B0C10 */
+      --foreground: #C5C6C7;
 
       --card: 0 0% 100%;
       --card-foreground: 240 10% 3.9%;
@@ -32,11 +32,14 @@
       --input: 240 5.9% 90%;
       --ring: 240 10% 3.9%;
 
+      --custom-beige: 43 63% 84%;  /* #EFE2BA */
+      --custom-beige-foreground: 240 10% 3.9%;
+
       --radius: 0.5rem;
     }
 
     .dark {
-      --background: 240 10% 3.9%;
+      --background: 240 25% 5%;  /* #0B0C10 */
       --foreground: 0 0% 98%;
 
       --card: 240 10% 3.9%;
@@ -63,6 +66,9 @@
       --border: 240 3.7% 15.9%;
       --input: 240 3.7% 15.9%;
       --ring: 240 4.9% 83.9%;
+
+      --custom-beige: 43 63% 84%;  /* #EFE2BA */
+      --custom-beige-foreground: 240 10% 3.9%;
     }
   }
 
@@ -72,6 +78,7 @@
     }
     body {
       @apply bg-background text-foreground;
+      background-color: #1F2833;
     }
   @layer base {
       .container {
